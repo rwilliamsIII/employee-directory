@@ -20,6 +20,14 @@ class App extends React.Component {
     .then(res => this.setState({employees: res.data}))
     .catch(err => console.log(err));
   }
+
+  componentDidMount() {
+    this.searchEmployee();
+  }
+
+  
+
+
 }
 
 
