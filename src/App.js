@@ -25,7 +25,23 @@ class App extends React.Component {
     this.searchEmployee();
   }
 
-  
+  handleSortID = () => {
+    const idSort = this.state.employees;
+    if (!this.state.sortID){
+      idSort.sort((a,b) => a.id > b.id ? -1: 1);
+      this.setState({
+        employees: idSort,
+        sortID: true
+      })
+    }
+    else {
+      idSort.reverse((a,b) => a.id < b.id ? -1: 1);
+      this.setState({
+        employees: idSort,
+        sortID: false
+      })
+    }
+  }
 
 
 }
