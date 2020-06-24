@@ -79,6 +79,24 @@ class App extends React.Component {
     }
   }
 
+  handleSortPhone = () => {
+    const phoneSort = this.state.employees;
+    if (!this.state.sortPhone) {
+      phoneSort.sort((a,b) => a.phone > b.email ? 1: -1)
+      this.setState({
+        employees: phoneSort,
+        sortPhone: true
+      })
+    }
+    else {
+      phoneSort.reverse((a,b) => a.phone < b.phone ? -1: 1);
+      this.setState({
+        employees: phoneSort,
+        sortPhone: false
+      })
+    }
+  }
+
   
 
 }
