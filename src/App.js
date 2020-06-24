@@ -28,7 +28,7 @@ class App extends React.Component {
   handleSortID = () => {
     const idSort = this.state.employees;
     if (!this.state.sortID){
-      idSort.sort((a,b) => a.id > b.id ? -1: 1);
+      idSort.sort((a,b) => a.id > b.id ? 1: -1)
       this.setState({
         employees: idSort,
         sortID: true
@@ -46,7 +46,7 @@ class App extends React.Component {
   handleSortName = () => {
     const nameSort = this.state.employees;
     if (!this.state.sortName) {
-      nameSort.sort((a,b) => a.name > b.name ? 1: -1);
+      nameSort.sort((a,b) => a.name > b.name ? 1: -1)
       this.setState({
         employees: nameSort,
         sortName: true
@@ -57,6 +57,24 @@ class App extends React.Component {
       this.setState({
         employees: nameSort,
         sortName: false
+      })
+    }
+  }
+
+  handleSortEmail = () => {
+    const emailSort = this.state.employees;
+    if (!this.state.sortEmail) {
+      emailSort.sort((a,b) => a.email > b.email ? 1: -1)
+      this.setState({
+        employees: emailSort,
+        sortEmail: true
+      })
+    }
+    else {
+      emailSort.reverse((a,b) => a.email < b.email ? -1: 1);
+      this.setState({
+        employees: emailSort,
+        sortEmail: false
       })
     }
   }
