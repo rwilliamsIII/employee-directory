@@ -43,6 +43,25 @@ class App extends React.Component {
     }
   }
 
+  handleSortName = () => {
+    const nameSort = this.state.employees;
+    if (!this.state.sortName) {
+      nameSort.sort((a,b) => a.name > b.name ? 1: -1);
+      this.setState({
+        employees: nameSort,
+        sortName: true
+      })
+    }
+    else {
+      nameSort.reverse((a,b) => a.name < b.name ? -1: 1);
+      this.setState({
+        employees: nameSort,
+        sortName: false
+      })
+    }
+  }
+
+  
 
 }
 
