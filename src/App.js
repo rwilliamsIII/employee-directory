@@ -97,7 +97,37 @@ class App extends React.Component {
     }
   }
 
-  
+  handleSearch = (event) => {
+    const value = event.target.value;
+    const name = event.target.name;
+    this.setState({
+      [name]: value
+    })
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    if (this.state.search === "") {
+      this.searchEmployee();
+    }
+    else {
+      this.setState({employees: [...this.state.employees.filter(employee => employee.name.includes(this.state.search))]})
+    }
+  }
+
+  render() {
+    return (
+      <div class="text-center">
+        <Header  value={this.state.search}
+                 handleSearch={this.handleSearch}
+                 handleSubmit={this.handleSubmit}
+        />
+        <Table handleSortID={this.handleSortID} handleSortPhone={this.handleSortPhone} handleSortEmail={this.handleSortEmail} handleSortName={this.handleSortName}>
+        <Employees employees={this.state.employees}/>
+        </Table>
+      </div>
+    )
+  }
 
 }
 
